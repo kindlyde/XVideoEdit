@@ -13,6 +13,13 @@ XVideoUi::XVideoUi(QWidget *parent)
 
 	/*»•µÙ±ÍÃ‚¿∏*/
 	setWindowFlags(Qt::FramelessWindowHint);
+
+	qRegisterMetaType<cv::Mat>("cv::Mat");
+
+	QObject::connect(XVideoThread::get(),
+		SIGNAL(ViewImage1(cv::Mat)),
+		ui.openGLWidget,
+		SLOT(setImage(cv::Mat)));
 }
 
 void XVideoUi::open()

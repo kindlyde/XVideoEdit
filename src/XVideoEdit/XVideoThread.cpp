@@ -9,6 +9,7 @@ using namespace std;
 
 /*1号视频源*/
 static VideoCapture cap1;
+bool isExit = false;
 
 /*打开1号视频源*/
 bool XVideoThread::open(const std::string file)
@@ -29,6 +30,13 @@ void XVideoThread::run()
 	for (;;)
 	{
 		mutex.lock();
+
+		if (isExit)
+		{
+			mutex.unlock();
+			break;
+		}
+
 		if (!cap1.isOpened())
 		{
 			mutex.unlock();
@@ -45,16 +53,20 @@ void XVideoThread::run()
 
 		//显示图像,以信号槽的方式将图像地址传输出去
 		ViewImage1(inImage);
-
+		msleep(40);
 		mutex.unlock();
 	}
 }
 
 XVideoThread::XVideoThread()
 {
+	start();
 }
 
 
 XVideoThread::~XVideoThread()
 {
+	mutex.lock();
+	isExit = true;
+	mutex.unlock();
 }
