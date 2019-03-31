@@ -9,6 +9,7 @@ class XVideoThread:public QThread
 	Q_OBJECT
 
 public:
+	int fps = 0;
 
 	static XVideoThread *get()
 	{
@@ -18,6 +19,12 @@ public:
 
 	/*打开视频文件*/
 	bool open(const std::string file);
+
+	/*获取视频播放进度*/
+	double getPos();
+
+	/*滑动条控制播放进度*/
+	void seek(double pos);
 
 	virtual ~XVideoThread();
 

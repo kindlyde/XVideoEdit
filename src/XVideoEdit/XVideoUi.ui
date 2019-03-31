@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>792</width>
     <height>600</height>
    </rect>
   </property>
@@ -69,6 +69,22 @@ background-color: rgb(53, 53, 53);</string>
     <string>打开</string>
    </property>
   </widget>
+  <widget class="QSlider" name="palySlider">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>250</y>
+     <width>281</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>1000</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -84,7 +100,7 @@ background-color: rgb(53, 53, 53);</string>
  <connections>
   <connection>
    <sender>closeButton</sender>
-   <signal>clicked()</signal>
+   <signal>pressed()</signal>
    <receiver>XVideoUiClass</receiver>
    <slot>close()</slot>
    <hints>
@@ -114,8 +130,59 @@ background-color: rgb(53, 53, 53);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>palySlider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>XVideoUiClass</receiver>
+   <slot>sliderMove()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>207</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>palySlider</sender>
+   <signal>sliderPressed()</signal>
+   <receiver>XVideoUiClass</receiver>
+   <slot>sliderPress()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>259</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>-21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>palySlider</sender>
+   <signal>sliderReleased()</signal>
+   <receiver>XVideoUiClass</receiver>
+   <slot>sliderRelease()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>198</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>-42</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>open()</slot>
+  <slot>sliderMove()</slot>
+  <slot>sliderPress()</slot>
+  <slot>sliderRelease()</slot>
  </slots>
 </ui>
