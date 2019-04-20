@@ -16,6 +16,9 @@ public slots:
 	void sliderMove();
 	void sliderPress();
 	void sliderRelease();
+	void set();
+	void exportVideo();
+	void exportEnd();
 
 private:
 	Ui::XVideoUiClass ui;

@@ -42,7 +42,7 @@ void CXFilter::clear()
 cv::Mat CXFilter::XPro(cv::Mat mat1, cv::Mat mat2)
 {
 	XImagePro p;
-	if (mat1.empty() || mat2.empty())
+	if (mat1.empty() && mat2.empty())
 	{
 		return cv::Mat();
 	}
